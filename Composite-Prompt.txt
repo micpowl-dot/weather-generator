@@ -1,0 +1,12 @@
+{
+  "prompt": "Use the uploaded 'base_image' as the primary photograph and preserve all of its original composition, lighting, colors, and details. The 'base_image' contains a specific placeholder area intended for inserting graphics. Use the second uploaded image, referenced as 'graphic_ref', as the source for those graphics. IMPORTANT: The black background in the 'graphic_ref' image must NOT be included in any form. Remove, ignore, or treat the black background as fully transparent. Extract ONLY the visible graphic elements from 'graphic_ref' and composite them cleanly into the placeholder area of the 'base_image'. Match the perspective, scale, lighting, reflections, and angle of the placeholder so the inserted graphic appears naturally integrated. Do not alter any other parts of the 'base_image'. The final composite should look seamless and realistic.",
+  
+  "base_image": "base_image",
+  "graphic_ref": "graphic_ref",
+  
+  "style": "photorealistic, precise, seamless composite",
+  "camera": "Use the perspective of the base_image",
+  "lighting": "Use the lighting and reflections of the base_image",
+  "mood": "Clean, realistic, naturally integrated",
+  "ar": "Match the aspect ratio of the base_image"
+}
