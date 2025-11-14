@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast Video Generator</title>
+    
+    <!-- Include Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Enable class-based dark mode
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        };
+    </script>
+    
+    <!-- Page Styles --><style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900">
+
+    <div class="flex min-h-screen bg-white dark:bg-gray-800">
+        
+        <!-- Sidebar --><aside class="w-full max-w-sm border-r border-gray-200 bg-gray-50/50 p-6 lg:p-8 dark:border-gray-700 dark:bg-gray-800/50">
+            <div class="pb-6">
+                <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Templates</h2>
+                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Choose a style or upload your own</p>
+            </div>
+            
+            <div class="space-y-6">
+                
+                <!-- Upload Card --><div class="flex cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 p-8 text-center text-gray-500 transition-colors hover:border-blue-500 hover:bg-blue-50 dark:border-gray-600 dark:text-gray-400 dark:hover:border-blue-400 dark:hover:bg-gray-700">
+                    
+                    <svg class="h-10 w-10 text-gray-400 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
+                    </svg>
+                    <span class="mt-2 block text-sm font-medium text-gray-700 dark:text-gray-300">Upload Custom Image</span>
+                    <span class="mt-1 block text-xs text-gray-500 dark:text-gray-400">Click to browse files</span>
+                </div>
+
+                <!-- Template Card: Local Weather --><div class="group cursor-pointer overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:border-blue-500 hover:shadow-md dark:border-gray-700 dark:bg-gray-800 dark:hover:border-blue-400">
+                    <img src="https://brandguide.weathercompany.com/wp-content/uploads/2025/11/Screenshot-2025-11-14-at-2.52.11-PM.png" 
+                         alt="Local Weather" 
+                         class="h-48 w-full object-cover"
+                         onerror="this.src='https://placehold.co/600x400?text=Image+Failed+To+Load'">
+                    <div class="p-4">
+                        <h3 class="text-sm font-semibold text-gray-900 dark:text-white">Local Weather</h3>
+                        <p class="mt-1 text-xs text-gray-600 dark:text-gray-400">A detailed local weather forecast display.</p>
+                    </div>
+                </div>
+
+                <!-- Template Card: Golfing Conditions --><div class="group cursor-pointer overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:border-blue-500 hover:shadow-md dark:border-gray-700 dark:bg-gray-800 dark:hover:border-blue-400">
+                    <img src="https://brandguide.weathercompany.com/wp-content/uploads/2025/11/Generated-Image-November-13-2025-3_24PM-1.png" 
+                         alt="Golfing Conditions" 
+                         class="h-48 w-full object-cover"
+                         onerror="this.src='https://placehold.co/600x400?text=Image+Failed+To+Load'">
+                    <div class="p-4">
+                        <h3 class="text-sm font-semibold text-gray-900 dark:text-white">Golfing Conditions</h3>
+                        <p class="mt-1 text-xs text-gray-600 dark:text-gray-400">A forecast for golfing conditions.</p>
+                    </div>
+                </div>
+
+                <!-- Template Card: Boating Forecast --><div class="group cursor-pointer overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:border-blue-500 hover:shadow-md dark:border-gray-700 dark:bg-gray-800 dark:hover:border-blue-400">
+                    <img src="https://brandguide.weathercompany.com/wp-content/uploads/2025/11/Generated-Image-November-13-2025-4_05PM-copy.jpg" 
+                         alt="Boating Forecast" 
+                         class="h-48 w-full object-cover"
+                         onerror="this.src='https://placehold.co/600x400?text=Image+Failed+To+Load'">
+                    <div class="p-4">
+                        <h3 class="text-sm font-semibold text-gray-900 dark:text-white">Boating Forecast</h3>
+                        <p class="mt-1 text-xs text-gray-600 dark:text-gray-400">A dynamic motion broadcast with AI visuals.</p>
+                    </div>
+                </div>
+
+            </div>
+        </aside>
+
+        <!-- Main Content --><main class="flex-grow p-6 lg:p-8">
+            <div class="mx-auto max-w-3xl">
+                <h1 class="text-2xl font-semibold text-gray-900 dark:text-white">Weather Forecast Video Generator</h1>
+                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Configure your video generation parameters</p>
+
+                <form class="mt-8 space-y-6">
+                    
+                    <!-- Continental US City --><div>
+                        <label for="city" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Continental US City</label>
+                        <input type="text" name="city" id="city" class="mt-1 block w-full rounded-md border-gray-400 bg-gray-50 py-1.5 px-2.5 shadow-inner focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400" placeholder="e.g., New York, Los Angeles, Chicago">
+                        <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">Enter a city in the continental United States</p>
+                    </div>
+
+                    <!-- Weather Condition --><div>
+                        <div class="flex items-center justify-between">
+                            <label for="weather" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Weather Condition</label>
+                            <div class="flex items-center">
+                                <input id="auto-fetch" name="auto-fetch" type="checkbox" class="h-4 w-4 rounded border-gray-400 text-blue-600 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:focus:ring-blue-600 dark:ring-offset-gray-800">
+                                <label for="auto-fetch" class="ml-2 block text-xs text-gray-600 dark:text-gray-400">Auto-fetch from API</label>
+                            </div>
+                        </div>
+                        <select id="weather" name="weather" class="mt-1 block w-full rounded-md border-gray-400 bg-gray-50 py-1.5 px-2.5 shadow-inner focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white">
+                            <option>Select weather</option>
+                            <option>Sunny</option>
+                            <option>Cloudy</option>
+                            <option>Rainy</option>
+                            <option>Snowy</option>
+                        </select>
+                    </div>
+
+                    <!-- Aspect Ratio --><div>
+                        <label for="aspect-ratio" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Aspect Ratio</label>
+                        <select id="aspect-ratio" name="aspect-ratio" class="mt-1 block w-full rounded-md border-gray-400 bg-gray-50 py-1.5 px-2.5 shadow-inner focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white">
+                            <option>16:9 (Landscape)</option>
+                            <option>9:16 (Vertical)</option>
+                            <option>1:1 (Square)</option>
+                        </select>
+                    </div>
+
+                    <!-- Graphics Layout Section --><div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Graphics Layout</label>
+                        <div class="mt-2 grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2">
+                            <!-- Feature Dropdown --><div>
+                                <label for="left-side" class="block text-xs font-medium text-gray-600 dark:text-gray-400">Feature</label>
+                                <select id="left-side" name="left-side" class="mt-1 block w-full rounded-md border-gray-400 bg-gray-50 py-1.5 px-2.5 shadow-inner focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white">
+                                    <option>Current Temperature</option>
+                                    <option>Today's High</option>
+                                    <option>Today's Low</option>
+                                    <option>Wind Speed</option>
+                                    <option>Precipitation Percentage</option>
+                                </select>
+                            </div>
+                            <!-- Supporting Dropdown --><div>
+                                <label for="right-side" class="block text-xs font-medium text-gray-600 dark:text-gray-400">Supporting</label>
+                                <select id="right-side" name="right-side" class="mt-1 block w-full rounded-md border-gray-400 bg-gray-50 py-1.5 px-2.5 shadow-inner focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white">
+                                    <option>3-Hours</option>
+                                    <option>3-Days</option>
+                                    <option>High/Low</option>
+                                    <option>Current Temperature</option>
+                                    <option>Radar</option>
+                                    <option>Hourly Precipitation Percentage</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Font Selection Section --><div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Font Selection</label>
+                        <div class="mt-2 grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2">
+                            <!-- Font Dropdown --><div>
+                                <label for="font-family" class="block text-xs font-medium text-gray-600 dark:text-gray-400">Font</label>
+                                <select id="font-family" name="font-family" class="mt-1 block w-full rounded-md border-gray-400 bg-gray-50 py-1.5 px-2.5 shadow-inner focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white">
+                                    <option>Inter</option>
+                                    <option>Arial</option>
+                                    <option>Times New Roman</option>
+                                    <option>Roboto</option>
+                                    <option>Montserrat</option>
+                                </select>
+                            </div>
+                            <!-- Font Weight Dropdown --><div>
+                                <label for="font-weight" class="block text-xs font-medium text-gray-600 dark:text-gray-400">Font Weight</label>
+                                <select id="font-weight" name="font-weight" class="mt-1 block w-full rounded-md border-gray-400 bg-gray-50 py-1.5 px-2.5 shadow-inner focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white">
+                                    <option>Regular</option>
+                                    <option>Medium</option>
+                                    <option>Semibold</option>
+                                    <option>Bold</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mt-4 flex items-center">
+                            <input id="recommend-font" name="recommend-font" type="checkbox" class="h-4 w-4 rounded border-gray-400 text-blue-600 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:focus:ring-blue-600 dark:ring-offset-gray-800">
+                            <label for="recommend-font" class="ml-2 block text-xs text-gray-600 dark:text-gray-400">Recommend Font</label>
+                        </div>
+                    </div>
+
+
+                    <!-- Additional Action --><div>
+                        <label for="additional" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Additional Action</label>
+                        <textarea id="additional" name="additional" rows="3" class="mt-1 block w-full rounded-md border-gray-400 bg-gray-50 py-1.5 px-2.5 shadow-inner focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400" placeholder="Describe what you'd like to add to the scene (Leave blank if nothing)"></textarea>
+                        <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">Optional: Add any specific requirements or preferences</p>
+                    </div>
+
+                    <!-- Audio Script --><div>
+                        <div class="flex items-center justify-between">
+                            <label for="audio-script" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Audio Script</label>
+                            <div class="flex items-center">
+                                <input id="ai-script" name="ai-script" type="checkbox" class="h-4 w-4 rounded border-gray-400 text-blue-600 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:focus:ring-blue-600 dark:ring-offset-gray-800">
+                                <label for="ai-script" class="ml-2 block text-xs text-gray-600 dark:text-gray-400">AI Generate script</label>
+                            </div>
+                        </div>
+                        <textarea id="audio-script" name="audio-script" rows="3" class="mt-1 block w-full rounded-md border-gray-400 bg-gray-50 py-1.5 px-2.5 shadow-inner focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400" placeholder="Enter the script for the voiceover..."></textarea>
+					</div>
+
+                    <!-- Voice and Duration --><div class="flex flex-col space-y-6 sm:flex-row sm:space-y-0 sm:space-x-4">
+                        <div class="flex-1">
+                            <label for="voice" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Voice</label>
+                            <select id="voice" name="voice" class="mt-1 block w-full rounded-md border-gray-400 bg-gray-50 py-1.5 px-2.5 shadow-inner focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white">
+                                <option>Select a voice</option>
+                                <option>Adam</option>
+                                <option>Rachel</option>
+                                <option>David</option>
+                            </select>
+                            <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">The text that will be converted to speech by ElevenLabs</p>
+                        </div>
+                        <div class="flex-1">
+                            <label for="duration" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Duration (seconds)</label>
+                            <input type="text" name="duration" id="duration" class="mt-1 block w-full rounded-md border-gray-400 bg-gray-50 py-1.5 px-2.5 shadow-inner focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white" value="30">
+                            <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">10-45 seconds</p>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button --><div class="pt-4">
+                        <button type="submit" class="flex w-full items-center justify-center rounded-lg bg-blue-600 px-4 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:bg-blue-600 dark:hover:bg-blue-500 dark:focus:ring-offset-gray-800">
+                            
+                            <svg class="mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM12 21a8.25 8.25 0 008.25-8.25H12V21z" />
+                            </svg>
+                            Generate Video
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
